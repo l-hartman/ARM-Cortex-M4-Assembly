@@ -11,20 +11,20 @@ init    MOV     R0,#100     ; set table size
         BX      LR          ; function return
 ```
 
-### A Sample of Cortex-M Instructions
+### Sample Cortex-M Instructions
 
 ```
-MOV R1, #100 ; R1=100
-MOV R2, R1 ; R1= R2 (put a copy of R1 into R2)
-LDR R1, =Count ; R1 points to the variable Count
-LDR R0, [R1] ; R0= value pointed to by R1
-STR R2, [R1] ; [R1]=R2 (store R0 to memory at [R1])
-ADD R2, R0 ; R2= R2+R0
-ADD R2, R0, R1 ; R2= R0+R1
-SUB R1, R1, #100 ; R1= R1-100
-SUB R2, R0, R1 ; R2= R0-R1
-LSL R0, R1, #4 ; R0=R1<<4 (shift to the left by four positions)
-LSR R2, R1, #3 ; R2=R1>>3 (shift to the right by 3 positions)
+MOV   R1,#100   ; R1=100
+MOV   R2,R1     ; R1= R2 (put a copy of R1 into R2)
+LDR   R1,=Count ; R1 points to the variable Count
+LDR   R0,[R1]   ; R0= value pointed to by R1
+STR   R2,[R1]   ; [R1]=R2 (store R0 to memory at [R1])
+ADD   R2,R0     ; R2= R2+R0
+ADD   R2,R0,R1  ; R2= R0+R1
+SUB   R1,R1,#100 ; R1= R1-100
+SUB   R2,R0,R1  ; R2= R0-R1
+LSL   R0,R1,#4  ; R0=R1<<4 (shift to the left by four positions)
+LSR   R2,R1,#3  ; R2=R1>>3 (shift to the right by 3 positions)
 ```
 
 ### Simple Arithmetic
