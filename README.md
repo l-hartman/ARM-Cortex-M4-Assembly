@@ -1,6 +1,6 @@
 # ARM-Cortex-M4-Assembly
 
-various ARM Assembly code snippets for reference.
+Various ARM Assembly code snippets for reference.
 
 ## General Syntax
 
@@ -59,3 +59,16 @@ __main
         END
 ```
 
+### BCD Digit Separation
+* Assume that X = 25 (BCD), we want to get R1 = 2 and R2 = 5, and then store them in Xten and Xunit, respectively.
+
+```
+MOV     R1,X            ; R1 gets a copy of X
+MOV     R2,R1           ; R2 gets a copy of X
+AND     R1,#0x0000000F  ; R1 has the units digit
+LDR     R0,=Xunit       ; R0 <- address of Xunit
+STRB    R1,[R0]         ; stores R1 in Xunit
+LSR     R2,#4           ; R2 has the tens digit
+LDR     R0,=Xten        ; R0 <- address of Xten
+STRB    R2,[R0]         ; stores R2 in Xten
+```
