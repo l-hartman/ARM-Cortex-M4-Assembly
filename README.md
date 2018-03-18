@@ -72,3 +72,27 @@ __main
         LDR     R0,=Xten        ; R0 <- address of Xten
         STRB    R2,[R0]         ; stores R2 in Xten
 ```
+
+### Covert BCD -> Binary
+* 68<sub>10</sub> = (0110 1000)<sub>BCD</sub> = 0110 * 10<sup>1</sup> + 1000 * 10<sup>0</sup>
+```
+        THUMB
+        AREA    MyData, DATA, READWRITE, ALIGN=2
+bcdVal          RN      R7    ; Input number is 23 (Decimal)
+bcdBin          DCB     0     ; Initialize Xunit to 0
+       
+        AREA    MyCode, CODE, ALIGN=2
+        EXPORT __main
+__main
+        MOV     R1,bcdVal      ; R1<-badVal
+        MOV     R2,R1          ; R2<-bcdVal
+        AND     R1,#0x0000000F ; R1 has the units digit
+        LSR     R2,#4          ; R2 has the tens digit
+        MOV     R3,R2          ; R3 gets a copy of R2
+        LSL     R2,#1          ; R2 gets 2*Xten
+        ADD     R2,R3,LSL #3   ; R2 gets 2*Xten+8*Xten=10*Xten
+        ADD     R2,R1          ; R2 gets 10*Xten + Xunit
+        LDR     R0,=bcdBin     ; R0<-address of bcdBin
+        STRB    R2,[R0]        ; store R2 in bcdBin
+        END
+```
