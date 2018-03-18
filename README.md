@@ -14,29 +14,29 @@ init    MOV     R0,#100     ; set table size
 ### Sample Cortex-M Instructions
 
 ```
-MOV   R1,#100   ; R1=100
-MOV   R2,R1     ; R1= R2 (put a copy of R1 into R2)
-LDR   R1,=Count ; R1 points to the variable Count
-LDR   R0,[R1]   ; R0= value pointed to by R1
-STR   R2,[R1]   ; [R1]=R2 (store R0 to memory at [R1])
-ADD   R2,R0     ; R2= R2+R0
-ADD   R2,R0,R1  ; R2= R0+R1
-SUB   R1,R1,#100 ; R1= R1-100
-SUB   R2,R0,R1  ; R2= R0-R1
-LSL   R0,R1,#4  ; R0=R1<<4 (shift to the left by four positions)
-LSR   R2,R1,#3  ; R2=R1>>3 (shift to the right by 3 positions)
+        MOV   R1,#100   ; R1=100
+        MOV   R2,R1     ; R1= R2 (put a copy of R1 into R2)
+        LDR   R1,=Count ; R1 points to the variable Count
+        LDR   R0,[R1]   ; R0= value pointed to by R1
+        STR   R2,[R1]   ; [R1]=R2 (store R0 to memory at [R1])
+        ADD   R2,R0     ; R2= R2+R0
+        ADD   R2,R0,R1  ; R2= R0+R1
+        SUB   R1,R1,#100 ; R1= R1-100
+        SUB   R2,R0,R1  ; R2= R0-R1
+        LSL   R0,R1,#4  ; R0=R1<<4 (shift to the left by four positions)
+        LSR   R2,R1,#3  ; R2=R1>>3 (shift to the right by 3 positions)
 ```
 
 ### Simple Arithmetic
 * compute: Vy = 7 * Vx, assuming Vx is in a register and Vy is a variable in memory.
 
 ```
-MOV   Vx,#12    ; initialize Vx
-MOV   R5,Vx     ; make copy of Vx in R5
-LSL   R5,R5,#3  ; R5= 8*R5=8*Vx
-SUB   R5,R5,Vx  ; R5= R5-Vx=8*Vx=7*Vx
-LDR   R0,=Vy    ; R0= address of Vy
-STR   R5,[R0]   ; Vy= R5
+        MOV   Vx,#12    ; initialize Vx
+        MOV   R5,Vx     ; make copy of Vx in R5
+        LSL   R5,R5,#3  ; R5= 8*R5=8*Vx
+        SUB   R5,R5,Vx  ; R5= R5-Vx=8*Vx=7*Vx
+        LDR   R0,=Vy    ; R0= address of Vy
+        STR   R5,[R0]   ; Vy= R5
 ```
 
 * compute: voltage = 9*current – 25
@@ -63,12 +63,12 @@ __main
 * Assume that X = 25 (BCD), we want to get R1 = 2 and R2 = 5, and then store them in Xten and Xunit, respectively.
 
 ```
-MOV     R1,X            ; R1 gets a copy of X
-MOV     R2,R1           ; R2 gets a copy of X
-AND     R1,#0x0000000F  ; R1 has the units digit
-LDR     R0,=Xunit       ; R0 <- address of Xunit
-STRB    R1,[R0]         ; stores R1 in Xunit
-LSR     R2,#4           ; R2 has the tens digit
-LDR     R0,=Xten        ; R0 <- address of Xten
-STRB    R2,[R0]         ; stores R2 in Xten
+        MOV     R1,X            ; R1 gets a copy of X
+        MOV     R2,R1           ; R2 gets a copy of X
+        AND     R1,#0x0000000F  ; R1 has the units digit
+        LDR     R0,=Xunit       ; R0 <- address of Xunit
+        STRB    R1,[R0]         ; stores R1 in Xunit
+        LSR     R2,#4           ; R2 has the tens digit
+        LDR     R0,=Xten        ; R0 <- address of Xten
+        STRB    R2,[R0]         ; stores R2 in Xten
 ```
