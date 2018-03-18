@@ -1,6 +1,7 @@
 # ARM-Cortex-M4-Assembly
 
-Various ARM Assembly code snippets for reference.
+ARM Assembly code snippets for reference.
+
 
 ## General Syntax
 
@@ -84,7 +85,7 @@ bcdBin          DCB     0     ; Initialize Xunit to 0
         AREA    MyCode, CODE, ALIGN=2
         EXPORT __main
 __main
-        MOV     R1,bcdVal      ; R1<-badVal
+        MOV     R1,bcdVal      ; R1<-bcdVal
         MOV     R2,R1          ; R2<-bcdVal
         AND     R1,#0x0000000F ; R1 has the units digit
         LSR     R2,#4          ; R2 has the tens digit
@@ -95,4 +96,11 @@ __main
         LDR     R0,=bcdBin     ; R0<-address of bcdBin
         STRB    R2,[R0]        ; store R2 in bcdBin
         END
+```
+### Branching and Control Flow
+```
+        B{cond}  label  ; branch to label
+        BX{cond} Rm     ; branch indirect to location specified by Rm
+        BL{cond} label  ; branch to subroutine at label
+        BLX{}    Rm     ; branch to subroutine indirect specified by Rm
 ```
