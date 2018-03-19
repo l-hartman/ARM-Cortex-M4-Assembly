@@ -12,8 +12,7 @@ init    MOV     R0,#100     ; set table size
         BX      LR          ; function return
 ```
 
-### Sample Cortex-M Instructions
-
+### Nonsensical Sample Instructions
 ```
         MOV   R1,#100   ; R1=100
         MOV   R2,R1     ; R1= R2 (put a copy of R1 into R2)
@@ -28,7 +27,7 @@ init    MOV     R0,#100     ; set table size
         LSR   R2,R1,#3  ; R2=R1>>3 (shift to the right by 3 positions)
 ```
 
-### Simple Algerbra
+## Simple Algerbra
 * compute: Vy = 7 * Vx, assuming Vx is in a register and Vy is a variable in memory.
 
 ```
@@ -59,7 +58,7 @@ __main
         STR     R5,[R0]       ; voltage <- R5
         END
 ```
-
+## Number Stuff!
 ### BCD Digit Separation
 * Assume that X = 25 (BCD), we want to get R1 = 2 and R2 = 5, and then store them in Xten and Xunit, respectively.
 
