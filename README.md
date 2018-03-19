@@ -28,7 +28,7 @@ init    MOV     R0,#100     ; set table size
         LSR   R2,R1,#3  ; R2=R1>>3 (shift to the right by 3 positions)
 ```
 
-### Simple Arithmetic
+### Simple Algerbra
 * compute: Vy = 7 * Vx, assuming Vx is in a register and Vy is a variable in memory.
 
 ```
