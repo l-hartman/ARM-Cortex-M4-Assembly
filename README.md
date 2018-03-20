@@ -96,10 +96,15 @@ __main
         STRB    R2,[R0]        ; store R2 in bcdBin
         END
 ```
-### Branching and Control Flow
+## Branching and Control Flow
+### branching
 ```
         B{cond}  label  ; branch to label
         BX{cond} Rm     ; branch indirect to location specified by Rm
         BL{cond} label  ; branch to subroutine at label
         BLX{}    Rm     ; branch to subroutine indirect specified by Rm
+```
+### conditionals
+```
+        
 ```
